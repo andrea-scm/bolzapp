@@ -1,0 +1,232 @@
+@font-face {
+  font-family: MuseoSans-500;
+  src: url('fonts/MuseoSans_500.otf');
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: MuseoSans-500;
+  background-color: #d6dbd8;
+  height: 100%;
+  width: 100%;
+}
+
+header{
+  position: fixed;
+  width: 100%;
+  height: 125px;
+  background-color: #009688;
+}
+
+i{
+  cursor: pointer;
+}
+
+::placeholder{
+  color: #8d9194;
+}
+
+.light-gray{
+  background-color: #eeeeee;
+}
+
+.border-top{
+  border-top: 1px solid #80878a;
+}
+
+.border-bot{
+  border-bottom: 1px solid #80878a;
+}
+
+.bolzapp-container{
+  position: absolute;
+  width: 90%;
+  height: 95%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  box-shadow: -2px -2px 3px 2px rgba(0, 0, 0, .2);
+
+}
+
+.container{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, .2);
+
+}
+
+.left-container{
+  background-color: white;
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-menu,
+.contact-menu{
+  width: 100%;
+  height: 10%;
+  position: relative;
+}
+
+.user-photo,
+.contact-photo,
+.contact-photo-menu{
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+}
+
+.user-menu-icons,
+.contact-menu-icons{
+  position: absolute;
+  right: 10px;
+  top: 25px;
+}
+
+.user-menu-icons > i,
+.contact-menu-icons > i{
+  margin-right: 30px;
+  color: #80878a;
+  font-size: 20px;
+}
+
+
+.search-contact{
+  width: 100%;
+  height: 6%;
+  position: relative;
+}
+
+.search-contact-input{
+  padding: 8px 10px;
+  width: 95%;
+  border-radius: 50px;
+  border: none;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+}
+
+.contacts{
+  width: 100%;
+  height: 84%;
+  overflow-y: scroll;
+}
+
+.contact{
+  height: 15%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.contact-photo{
+  position: relative;
+  top: 20px
+}
+
+.contact-text{
+  width: 60%;
+  margin-left: 40px;
+  padding: 25px 20px;
+}
+
+.right-container{
+  width: 70%;
+  height: 100%;
+  position: relative;
+}
+
+.border-left{
+  border-left: 1px solid #80878a;
+}
+
+.contact-text-menu{
+  margin-left: 80px;
+  padding: 25px 20px;
+}
+
+.messages{
+  width: 100%;
+  height: 80%;
+  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/12ee6265-e947-474a-a378-6d78ab0d1117/d8fr7iz-082cab4c-3f87-47e1-b2f0-efdb504372e5.jpg/v1/fill/w_1024,h_576,q_75,strp/super_hero_whatsapp_background_by_x_ama_d8fr7iz-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTc2IiwicGF0aCI6IlwvZlwvMTJlZTYyNjUtZTk0Ny00NzRhLWEzNzgtNmQ3OGFiMGQxMTE3XC9kOGZyN2l6LTA4MmNhYjRjLTNmODctNDdlMS1iMmYwLWVmZGI1MDQzNzJlNS5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.BzcKtmJbHcafn-3f4-9tNEiybd-JbKGVeynAsEJFICI');
+  background-size: contain;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+
+.message{
+  width: auto;
+  max-width: 50%;
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  float: left;
+  margin-left: 15px;
+}
+
+.message:after{
+  display: table;
+  content: '';
+  clear: both;
+}
+
+.message.utente{
+  float: right;
+  background-color: #dcf8c6;
+  margin-right: 15px;
+}
+
+
+.text-area-container{
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+}
+
+.emoticon-icon,
+.send-icon{
+  width: 5%;
+  font-size: 22px;
+  color: #8d9194;
+  position: relative;
+}
+
+.emoticon-icon > i,
+.send-icon > i{
+  position: absolute;
+  top: 24px;
+  left: 12px;
+}
+
+
+.message-to-send{
+  width: 90%;
+  height: 60%;
+  margin: auto;
+  border: none;
+  border-radius: 50px;
+  padding: 5px 20px;
+}
