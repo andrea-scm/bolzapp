@@ -36,11 +36,15 @@ i{
 }
 
 .border-top{
-  border-top: 1px solid #80878a;
+  border-top: 1px solid rgba(0,0,0, .1);
 }
 
 .border-bot{
-  border-bottom: 1px solid #80878a;
+  border-bottom: 1px solid rgba(0,0,0, .1);
+}
+
+.border-left{
+  border-left: 1px solid rgba(0,0,0, .1);
 }
 
 .bolzapp-container{
@@ -90,6 +94,8 @@ i{
   position: absolute;
   top: 10px;
   left: 20px;
+  background-image: url('http://catchfreedeal.com/img/user_icon.png');
+  background-size: contain;
 }
 
 .user-menu-icons,
@@ -137,9 +143,13 @@ i{
   flex-direction: row;
 }
 
+.contact:hover{
+  background-color: #eeeeee;
+}
+
 .contact-photo{
   position: relative;
-  top: 20px
+  top: 20px;
 }
 
 .contact-text{
@@ -152,10 +162,6 @@ i{
   width: 70%;
   height: 100%;
   position: relative;
-}
-
-.border-left{
-  border-left: 1px solid #80878a;
 }
 
 .contact-text-menu{

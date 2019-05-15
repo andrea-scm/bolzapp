@@ -10,6 +10,16 @@ $('.fa-paper-plane').click(function () {
     $('.message-to-send').val('');
     //imposta lo scroll alla fine del div in modo da visualizare subito il msg inviato
     $('.messages').scrollTop($('.messages').height());
+    //messaggio di risposta
+    setTimeout(function() {
+      $('.messages').append(
+      '<div class="message-container">'+
+        '<div class="message">'+
+          'ok' +
+        '</div>'+
+      '</div>');
+      $('.messages').scrollTop($('.messages').height());
+    },1000);
   }
 });
 
@@ -30,5 +40,28 @@ $('.message-to-send').keypress(function (enter) {
     $('.message-to-send').val('');
     //imposta lo scroll alla fine del div in modo da visualizare subito il msg inviato
     $('.messages').scrollTop($('.messages').height());
+    //messaggio di risposta
+    setTimeout(function() {
+      $('.messages').append(
+      '<div class="message-container">'+
+        '<div class="message">'+
+          'ok' +
+        '</div>'+
+      '</div>');
+      $('.messages').scrollTop($('.messages').height());
+    },1000);
   }
+});
+
+//var contactName = $('.contact-name > h3').text().split(/(?=[A-Z])/);
+
+$('.search-contact-input').keypress(function (search) {
+  var keyCode = (search.which);
+  var searchInput = $('.search-contact-input').val().toLowerCase();
+  var searchInputSplitted = searchInput.split('');
+  console.log(searchInputSplitted);
+  //console.log(keyCode);
+  if ((keyCode > 64 && keyCode < 123) && searchInput != '') {
+    
+  };
 });
