@@ -53,15 +53,27 @@ $('.message-to-send').keypress(function (enter) {
   }
 });
 
-//var contactName = $('.contact-name > h3').text().split(/(?=[A-Z])/);
 
-$('.search-contact-input').keypress(function (search) {
+$('.search-contact-input').keyup(function (search) {
+  var searchInput = $(this).val().toLowerCase();
+  //console.log(searchInput);
   var keyCode = (search.which);
-  var searchInput = $('.search-contact-input').val().toLowerCase();
-  var searchInputSplitted = searchInput.split('');
-  console.log(searchInputSplitted);
   //console.log(keyCode);
-  if ((keyCode > 64 && keyCode < 123) && searchInput != '') {
-    
+  if (((keyCode > 64 && keyCode < 123) || keyCode == 8) && searchInput != '') {
+    $('.contact').each(function () {
+      var contactName = $(this).find('.contact-name > h3').text().toLowerCase();
+      //console.log(name);
+      //se il contactName corrente include il carattere/i caratteri correnti dell'input
+      //allora mostro i contactName che includono quei caratteri altrimenti nascondo
+      //il contact corrente
+      if (contactName.includes(searchInput)) {
+        $(this).show();
+      }
+      else {
+        $(this).hide();
+      };
+    });
+  }else {
+    $('.contact').show(); //rimostro i contatti
   };
 });
