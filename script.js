@@ -80,205 +80,240 @@ $('.search-contact-input').keyup(function (search) {
 });
 
 //Milestone 3: cambia conversazione in base al contatto + rimuovi messaggio
-$('.contact').click(function () {
-  var nomeContatto = $(this).find('.contact-name > h3').text();
-  var prevContactSelected = $(this).siblings('.contact.light-gray');
-  var conversazioni = [
-    {
-    'contatto': 'Andrea',
-    'conversazione':'<div class="message-container">'+
-    '<div class="message utente">'+'Ciao'+
+var dropdown ='<i class="fas fa-chevron-down"></i>'+'<div class="dropdown-menu">'+'<div class="dropdown-menu-item">'+'Elimina messaggio'+'</div>'+'</div>';
+
+
+var conversazioni = [
+  {
+  'contatto': 'Andrea',
+  'conversazione':'<div class="message-container">'+
+  '<div class="message utente">'+
+    dropdown +'Ciao'+
+    '</div>'+
+  '</div>'
+  +
+  '<div class="message-container">'+
+    '<div class="message">'+
+      dropdown +
+      'Ehi'+
+    '</div>'+
+  '</div>'+
+
+  '<div class="message-container">'+
+    '<div class="message utente">'+
+      dropdown +
+      'ti va di fare un giro in centro?'+
+    '</div>'+
+  '</div>'
+  },
+  {
+    'contatto': 'Marco',
+    'conversazione': '<div class="message-container">'+
+    '<div class="message utente">'+
+      dropdown +'Ehi'+
       '</div>'+
     '</div>'
     +
     '<div class="message-container">'+
       '<div class="message">'+
+        dropdown +
+        'Ciao dimmi'+
+      '</div>'+
+    '</div>'+
+
+    '<div class="message-container">'+
+      '<div class="message utente">'+
+        dropdown +
+        'ti va di andare a bere qualcosa?'+
+      '</div>'+
+    '</div>'
+  },
+  {
+    'contatto': 'Maria',
+    'conversazione': '<div class="message-container">'+
+    '<div class="message utente">'+
+      dropdown +'Ciao,pensavo di andare al cinema a vedere la nuova uscita Marvel,ti andrebbe di venire?'+
+      '</div>'+
+    '</div>'
+    +
+    '<div class="message-container">'+
+      '<div class="message">'+
+        dropdown +
+        'Certo! Adoro i film Marvel!'+
+      '</div>'+
+    '</div>'+
+
+    '<div class="message-container">'+
+      '<div class="message utente">'+
+        dropdown +
+        'Perfetto,allora ti passo a prendere più tardi'+
+      '</div>'+
+    '</div>'
+  },
+  {
+    'contatto': 'Luigi',
+    'conversazione': '<div class="message-container">'+
+    '<div class="message utente">'+
+      dropdown +'Ciao,come va?'+
+      '</div>'+
+    '</div>'
+    +
+    '<div class="message-container">'+
+      '<div class="message">'+
+        dropdown +
+        'Tutto bene'+
+      '</div>'+
+    '</div>'
+  },
+  {
+    'contatto': 'Luisa',
+    'conversazione': '<div class="message-container">'+
+    '<div class="message utente">'+
+      dropdown +'Ehi Luisa puoi passare al supermercato a prendere del vino?'+
+      '</div>'+
+    '</div>'
+    +
+    '<div class="message-container">'+
+      '<div class="message">'+
+        dropdown +
+        'Certamente,passo appena finisco da lavoro'+
+      '</div>'+
+    '</div>'+
+
+    '<div class="message-container">'+
+      '<div class="message utente">'+
+        dropdown +
+        'Grazie mille!'+
+      '</div>'+
+    '</div>'
+  },
+  {
+    'contatto': 'Fabrizio',
+    'conversazione': '<div class="message-container">'+
+    '<div class="message utente">'+
+      dropdown +'Ehi Fabrizio'+
+      '</div>'+
+    '</div>'
+    +
+    '<div class="message-container">'+
+      '<div class="message">'+
+        dropdown +
+        'Ciao dimmi'+
+      '</div>'+
+    '</div>'+
+
+    '<div class="message-container">'+
+      '<div class="message utente">'+
+        dropdown +
+        'Potresti passare a prendermi per scendere al mare'+
+      '</div>'+
+    '</div>'+
+    '<div class="message-container">'+
+      '<div class="message">'+
+        dropdown +
+        'Certo,nessun problema!'+
+      '</div>'+
+    '</div>'
+  },
+  {
+    'contatto': 'Federica',
+    'conversazione': '<div class="message-container">'+
+    '<div class="message utente">'+
+      dropdown +'Ciao Fede'+
+      '</div>'+
+    '</div>'
+    +
+    '<div class="message-container">'+
+      '<div class="message">'+
+        dropdown +
         'Ehi'+
       '</div>'+
     '</div>'+
 
     '<div class="message-container">'+
       '<div class="message utente">'+
-        'ti va di fare un giro in centro?'+
+        dropdown +
+        'ti va se pomeriggio studiamo assieme?'+
       '</div>'+
     '</div>'
-    },
-    {
-      'contatto': 'Marco',
-      'conversazione': '<div class="message-container">'+
-      '<div class="message utente">'+'Ehi'+
-        '</div>'+
-      '</div>'
-      +
-      '<div class="message-container">'+
-        '<div class="message">'+
-          'Ciao dimmi'+
-        '</div>'+
+  },
+  {
+    'contatto': 'Umberto',
+    'conversazione': '<div class="message-container">'+
+    '<div class="message utente">'+
+      dropdown +'Ehi'+
       '</div>'+
+    '</div>'
+    +
+    '<div class="message-container">'+
+      '<div class="message">'+
+        dropdown +
+        'Ciao'+
+      '</div>'+
+    '</div>'+
 
-      '<div class="message-container">'+
-        '<div class="message utente">'+
-          'ti va di andare a bere qualcosa?'+
-        '</div>'+
-      '</div>'
-    },
-    {
-      'contatto': 'Maria',
-      'conversazione': '<div class="message-container">'+
-      '<div class="message utente">'+'Ciao,pensavo di andare al cinema a vedere la nuova uscita Marvel,ti andrebbe di venire?'+
-        '</div>'+
-      '</div>'
-      +
-      '<div class="message-container">'+
-        '<div class="message">'+
-          'Certo! Adoro i film Marvel!'+
-        '</div>'+
+    '<div class="message-container">'+
+      '<div class="message utente">'+
+        dropdown +
+        'sei disponibile domani per un pranzo insieme ai colleghi?'+
       '</div>'+
+    '</div>'
+  },
+  {
+    'contatto': 'Leonardo',
+    'conversazione': '<div class="message-container">'+
+    '<div class="message utente">'+
+      dropdown +'Ehi'+
+      '</div>'+
+    '</div>'
+    +
+    '<div class="message-container">'+
+      '<div class="message">'+
+        dropdown +
+        'Ciao dimmi'+
+      '</div>'+
+    '</div>'+
 
-      '<div class="message-container">'+
-        '<div class="message utente">'+
-          'Perfetto,allora ti passo a prendere più tardi'+
-        '</div>'+
-      '</div>'
-    },
-    {
-      'contatto': 'Luigi',
-      'conversazione': '<div class="message-container">'+
-      '<div class="message utente">'+'Ciao,come va?'+
-        '</div>'+
-      '</div>'
-      +
-      '<div class="message-container">'+
-        '<div class="message">'+
-          'Tutto bene'+
-        '</div>'+
-      '</div>'
-    },
-    {
-      'contatto': 'Luisa',
-      'conversazione': '<div class="message-container">'+
-      '<div class="message utente">'+'Ehi Luisa puoi passare al supermercato a prendere del vino?'+
-        '</div>'+
-      '</div>'
-      +
-      '<div class="message-container">'+
-        '<div class="message">'+
-          'Certamente,passo appena finisco da lavoro'+
-        '</div>'+
+    '<div class="message-container">'+
+      '<div class="message utente">'+
+        dropdown +
+        'domani ci sta un concerto di una nuova band pop punk,ti va di andare a vederli?'+
       '</div>'+
+    '</div>'+
+    '<div class="message-container">'+
+      '<div class="message">'+
+        dropdown +
+        'Volentieri!'+
+      '</div>'+
+    '</div>'
+  },
+  {
+    'contatto': 'Giada',
+    'conversazione': '<div class="message-container">'+
+    '<div class="message utente">'+
+      dropdown +'Ehi'+
+      '</div>'+
+    '</div>'
+    +
+    '<div class="message-container">'+
+      '<div class="message">'+
+        dropdown +
+        'Ciao dimmi'+
+      '</div>'+
+    '</div>'+
 
-      '<div class="message-container">'+
-        '<div class="message utente">'+
-          'Grazie mille!'+
-        '</div>'+
-      '</div>'
-    },
-    {
-      'contatto': 'Fabrizio',
-      'conversazione': '<div class="message-container">'+
-      '<div class="message utente">'+'Ehi Fabrizio'+
-        '</div>'+
-      '</div>'
-      +
-      '<div class="message-container">'+
-        '<div class="message">'+
-          'Ciao dimmi'+
-        '</div>'+
+    '<div class="message-container">'+
+      '<div class="message utente">'+
+        dropdown +
+        'non so più cosa inventare'+
       '</div>'+
+    '</div>'
+  }
+];
 
-      '<div class="message-container">'+
-        '<div class="message utente">'+
-          'Potresti passare a prendermi per scendere al mare'+
-        '</div>'+
-      '</div>'+
-      '<div class="message-container">'+
-        '<div class="message">'+
-          'Certo,nessun problema!'+
-        '</div>'+
-      '</div>'
-    },
-    {
-      'contatto': 'Federica',
-      'conversazione': '<div class="message-container">'+
-      '<div class="message utente">'+'Ciao Fede'+
-        '</div>'+
-      '</div>'
-      +
-      '<div class="message-container">'+
-        '<div class="message">'+
-          'Ehi'+
-        '</div>'+
-      '</div>'+
-
-      '<div class="message-container">'+
-        '<div class="message utente">'+
-          'ti va se pomeriggio studiamo assieme?'+
-        '</div>'+
-      '</div>'
-    },
-    {
-      'contatto': 'Umberto',
-      'conversazione': '<div class="message-container">'+
-      '<div class="message utente">'+'Ehi'+
-        '</div>'+
-      '</div>'
-      +
-      '<div class="message-container">'+
-        '<div class="message">'+
-          'Ciao'+
-        '</div>'+
-      '</div>'+
-
-      '<div class="message-container">'+
-        '<div class="message utente">'+
-          'sei disponibile domani per un pranzo insieme ai colleghi?'+
-        '</div>'+
-      '</div>'
-    },
-    {
-      'contatto': 'Leonardo',
-      'conversazione': '<div class="message-container">'+
-      '<div class="message utente">'+'Ehi'+
-        '</div>'+
-      '</div>'
-      +
-      '<div class="message-container">'+
-        '<div class="message">'+
-          'Ciao dimmi'+
-        '</div>'+
-      '</div>'+
-
-      '<div class="message-container">'+
-        '<div class="message utente">'+
-          'domani ci sta un concerto di una nuova band pop punk,ti va di andare a vederli?'+
-        '</div>'+
-      '</div>'+
-      '<div class="message-container">'+
-        '<div class="message">'+
-          'Volentieri!'+
-        '</div>'+
-      '</div>'
-    },
-    {
-      'contatto': 'Giada',
-      'conversazione': '<div class="message-container">'+
-      '<div class="message utente">'+'Ehi'+
-        '</div>'+
-      '</div>'
-      +
-      '<div class="message-container">'+
-        '<div class="message">'+
-          'Ciao dimmi'+
-        '</div>'+
-      '</div>'+
-
-      '<div class="message-container">'+
-        '<div class="message utente">'+
-          'non so più cosa inventare'+
-        '</div>'+
-      '</div>'
-    }
-  ];
+$('.contact').click(function () {
+  var nomeContatto = $(this).find('.contact-name > h3').text();
+  var prevContactSelected = $(this).siblings('.contact.light-gray');
   //console.log(nomeContatto,conversazioni);
   for (var i = 0; i < conversazioni.length; i++) {
     //console.log(conversazioni[i].conversazione)
@@ -290,4 +325,14 @@ $('.contact').click(function () {
   }
   $(this).toggleClass('light-gray');
   $(prevContactSelected).removeClass('light-gray');
+});
+
+$(document).on('mouseenter mouseleave','.message',function () {
+  $(this).children('i').toggleClass('active');
+  $('.fa-chevron-down').click(function () {
+    $(this).siblings('.dropdown-menu').toggleClass('active');
+  })
+  $('.dropdown-menu-item').click(function () {
+    $(this).parents('.message-container').hide()
+  })
 });

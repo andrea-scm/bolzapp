@@ -191,6 +191,8 @@ i{
   margin-bottom: 15px;
   float: left;
   margin-left: 15px;
+  padding-right: 30px;
+  position: relative;
 }
 
 .message:after{
@@ -205,6 +207,36 @@ i{
   margin-right: 15px;
 }
 
+.fas.fa-chevron-down{
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  display: none;
+}
+
+.fa-chevron-down.active{
+  display: block;
+}
+
+.dropdown-menu{
+  display: none;
+  position: absolute;
+  top: 53px;
+  right: -15px;
+  width: 85px;
+  font-size: 13px;
+  background-color: lightyellow;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.dropdown-menu.active{
+  display: block;
+}
+
+.dropdown-menu-item{
+  cursor: pointer;
+}
 
 .text-area-container{
   width: 100%;
