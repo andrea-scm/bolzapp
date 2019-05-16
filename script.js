@@ -1,3 +1,4 @@
+//Milestone 1: invio messaggio  + risposta 'ok'(milestone 2)
 $('.fa-paper-plane').click(function () {
   var inputMessage = $('.message-to-send').val();
   if (inputMessage != '') {
@@ -53,7 +54,7 @@ $('.message-to-send').keypress(function (enter) {
   }
 });
 
-
+//Milestone 2:filtro ricerca
 $('.search-contact-input').keyup(function (search) {
   var searchInput = $(this).val().toLowerCase();
   //console.log(searchInput);
@@ -76,4 +77,217 @@ $('.search-contact-input').keyup(function (search) {
   }else {
     $('.contact').show(); //rimostro i contatti
   };
+});
+
+//Milestone 3: cambia conversazione in base al contatto + rimuovi messaggio
+$('.contact').click(function () {
+  var nomeContatto = $(this).find('.contact-name > h3').text();
+  var prevContactSelected = $(this).siblings('.contact.light-gray');
+  var conversazioni = [
+    {
+    'contatto': 'Andrea',
+    'conversazione':'<div class="message-container">'+
+    '<div class="message utente">'+'Ciao'+
+      '</div>'+
+    '</div>'
+    +
+    '<div class="message-container">'+
+      '<div class="message">'+
+        'Ehi'+
+      '</div>'+
+    '</div>'+
+
+    '<div class="message-container">'+
+      '<div class="message utente">'+
+        'ti va di fare un giro in centro?'+
+      '</div>'+
+    '</div>'
+    },
+    {
+      'contatto': 'Marco',
+      'conversazione': '<div class="message-container">'+
+      '<div class="message utente">'+'Ehi'+
+        '</div>'+
+      '</div>'
+      +
+      '<div class="message-container">'+
+        '<div class="message">'+
+          'Ciao dimmi'+
+        '</div>'+
+      '</div>'+
+
+      '<div class="message-container">'+
+        '<div class="message utente">'+
+          'ti va di andare a bere qualcosa?'+
+        '</div>'+
+      '</div>'
+    },
+    {
+      'contatto': 'Maria',
+      'conversazione': '<div class="message-container">'+
+      '<div class="message utente">'+'Ciao,pensavo di andare al cinema a vedere la nuova uscita Marvel,ti andrebbe di venire?'+
+        '</div>'+
+      '</div>'
+      +
+      '<div class="message-container">'+
+        '<div class="message">'+
+          'Certo! Adoro i film Marvel!'+
+        '</div>'+
+      '</div>'+
+
+      '<div class="message-container">'+
+        '<div class="message utente">'+
+          'Perfetto,allora ti passo a prendere più tardi'+
+        '</div>'+
+      '</div>'
+    },
+    {
+      'contatto': 'Luigi',
+      'conversazione': '<div class="message-container">'+
+      '<div class="message utente">'+'Ciao,come va?'+
+        '</div>'+
+      '</div>'
+      +
+      '<div class="message-container">'+
+        '<div class="message">'+
+          'Tutto bene'+
+        '</div>'+
+      '</div>'
+    },
+    {
+      'contatto': 'Luisa',
+      'conversazione': '<div class="message-container">'+
+      '<div class="message utente">'+'Ehi Luisa puoi passare al supermercato a prendere del vino?'+
+        '</div>'+
+      '</div>'
+      +
+      '<div class="message-container">'+
+        '<div class="message">'+
+          'Certamente,passo appena finisco da lavoro'+
+        '</div>'+
+      '</div>'+
+
+      '<div class="message-container">'+
+        '<div class="message utente">'+
+          'Grazie mille!'+
+        '</div>'+
+      '</div>'
+    },
+    {
+      'contatto': 'Fabrizio',
+      'conversazione': '<div class="message-container">'+
+      '<div class="message utente">'+'Ehi Fabrizio'+
+        '</div>'+
+      '</div>'
+      +
+      '<div class="message-container">'+
+        '<div class="message">'+
+          'Ciao dimmi'+
+        '</div>'+
+      '</div>'+
+
+      '<div class="message-container">'+
+        '<div class="message utente">'+
+          'Potresti passare a prendermi per scendere al mare'+
+        '</div>'+
+      '</div>'+
+      '<div class="message-container">'+
+        '<div class="message">'+
+          'Certo,nessun problema!'+
+        '</div>'+
+      '</div>'
+    },
+    {
+      'contatto': 'Federica',
+      'conversazione': '<div class="message-container">'+
+      '<div class="message utente">'+'Ciao Fede'+
+        '</div>'+
+      '</div>'
+      +
+      '<div class="message-container">'+
+        '<div class="message">'+
+          'Ehi'+
+        '</div>'+
+      '</div>'+
+
+      '<div class="message-container">'+
+        '<div class="message utente">'+
+          'ti va se pomeriggio studiamo assieme?'+
+        '</div>'+
+      '</div>'
+    },
+    {
+      'contatto': 'Umberto',
+      'conversazione': '<div class="message-container">'+
+      '<div class="message utente">'+'Ehi'+
+        '</div>'+
+      '</div>'
+      +
+      '<div class="message-container">'+
+        '<div class="message">'+
+          'Ciao'+
+        '</div>'+
+      '</div>'+
+
+      '<div class="message-container">'+
+        '<div class="message utente">'+
+          'sei disponibile domani per un pranzo insieme ai colleghi?'+
+        '</div>'+
+      '</div>'
+    },
+    {
+      'contatto': 'Leonardo',
+      'conversazione': '<div class="message-container">'+
+      '<div class="message utente">'+'Ehi'+
+        '</div>'+
+      '</div>'
+      +
+      '<div class="message-container">'+
+        '<div class="message">'+
+          'Ciao dimmi'+
+        '</div>'+
+      '</div>'+
+
+      '<div class="message-container">'+
+        '<div class="message utente">'+
+          'domani ci sta un concerto di una nuova band pop punk,ti va di andare a vederli?'+
+        '</div>'+
+      '</div>'+
+      '<div class="message-container">'+
+        '<div class="message">'+
+          'Volentieri!'+
+        '</div>'+
+      '</div>'
+    },
+    {
+      'contatto': 'Giada',
+      'conversazione': '<div class="message-container">'+
+      '<div class="message utente">'+'Ehi'+
+        '</div>'+
+      '</div>'
+      +
+      '<div class="message-container">'+
+        '<div class="message">'+
+          'Ciao dimmi'+
+        '</div>'+
+      '</div>'+
+
+      '<div class="message-container">'+
+        '<div class="message utente">'+
+          'non so più cosa inventare'+
+        '</div>'+
+      '</div>'
+    }
+  ];
+  //console.log(nomeContatto,conversazioni);
+  for (var i = 0; i < conversazioni.length; i++) {
+    //console.log(conversazioni[i].conversazione)
+    //console.log(conversazioni[i].contatto);
+    if (nomeContatto == conversazioni[i].contatto) {
+      $('.contact-name-menu > h3').text(conversazioni[i].contatto);
+      $('.messages').html(conversazioni[i].conversazione);
+    }
+  }
+  $(this).toggleClass('light-gray');
+  $(prevContactSelected).removeClass('light-gray');
 });
