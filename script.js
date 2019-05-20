@@ -1,25 +1,31 @@
 //Milestone 1: invio messaggio  + risposta 'ok'(milestone 2)
 $('.fa-paper-plane').click(function () {
   var inputMessage = $('.message-to-send').val();
+  var sendMessage = '<div class="message-container">'+'<div class="message utente">'+dropdown+inputMessage +'</div>'+  '</div>';
+  var replyMessage = '<div class="message-container">'+'<div class="message">'+dropdown+'ok' +'</div>'+'</div>';
+  var nomeContatto = $('.contact-name-menu > h3').text();
   if (inputMessage != '') {
-    $('.messages').append(
-    '<div class="message-container">'+
-      '<div class="message utente">'+
-      inputMessage +
-      '</div>'+
-    '</div>');
-    $('.message-to-send').val('');
+    $('.messages').append(sendMessage);
+    //in questo modo appendo il messaggio inviato anche al mio oggetto conversazioni
+    //in modo che viene salvato
+    for (var i = 0; i < conversazioni.length; i++) {
+      if (nomeContatto == conversazioni[i].contatto) {
+      conversazioni[i].conversazione+=sendMessage;
+      }
+    };
     //imposta lo scroll alla fine del div in modo da visualizare subito il msg inviato
-    $('.messages').scrollTop($('.messages').height());
+    $('.messages').scrollTop($('.messages')[0].scrollHeight);
     //messaggio di risposta
     setTimeout(function() {
-      $('.messages').append(
-      '<div class="message-container">'+
-        '<div class="message">'+
-          'ok' +
-        '</div>'+
-      '</div>');
-      $('.messages').scrollTop($('.messages').height());
+      $('.messages').append(replyMessage);
+      //in questo modo appendo il messaggio di risposta anche al mio oggetto conversazioni
+      //in modo che viene salvato
+      for (var i = 0; i < conversazioni.length; i++) {
+        if (nomeContatto == conversazioni[i].contatto) {
+        conversazioni[i].conversazione+=replyMessage;
+        }
+      };
+      $('.messages').scrollTop($('.messages')[0].scrollHeight);
     },1000);
   }
 });
@@ -27,29 +33,36 @@ $('.fa-paper-plane').click(function () {
 
 $('.message-to-send').keypress(function (enter) {
   var inputMessage = $('.message-to-send').val();
+  var sendMessage = '<div class="message-container">'+'<div class="message utente">'+dropdown+inputMessage +'</div>'+  '</div>';
+  var replyMessage = '<div class="message-container">'+'<div class="message">'+dropdown+'ok' +'</div>'+'</div>';
   /*salvo in una variabile il codice del tasto premuto
   il quale viene riconosciuto dalla funzione .which*/
   var keyCode = (enter.which);
   //se il tasto premuto è = 13,ovvero Invio,allora mando il messaggio
   if (keyCode == '13' && inputMessage != '') {
-    $('.messages').append(
-    '<div class="message-container">'+
-      '<div class="message utente">'+
-      inputMessage +
-      '</div>'+
-    '</div>');
+    var nomeContatto = $('.contact-name-menu > h3').text();
+    $('.messages').append(sendMessage);
+    //in questo modo appendo il messaggio inviato anche al mio oggetto conversazioni
+    //in modo che viene salvato
+    for (var i = 0; i < conversazioni.length; i++) {
+      if (nomeContatto == conversazioni[i].contatto) {
+      conversazioni[i].conversazione+=sendMessage;
+      }
+    };
     $('.message-to-send').val('');
     //imposta lo scroll alla fine del div in modo da visualizare subito il msg inviato
-    $('.messages').scrollTop($('.messages').height());
+    $('.messages').scrollTop($('.messages')[0].scrollHeight);
     //messaggio di risposta
     setTimeout(function() {
-      $('.messages').append(
-      '<div class="message-container">'+
-        '<div class="message">'+
-          'ok' +
-        '</div>'+
-      '</div>');
-      $('.messages').scrollTop($('.messages').height());
+      $('.messages').append(replyMessage);
+      //in questo modo appendo il messaggio di risposta anche al mio oggetto conversazioni
+      //in modo che viene salvato
+      for (var i = 0; i < conversazioni.length; i++) {
+        if (nomeContatto == conversazioni[i].contatto) {
+        conversazioni[i].conversazione+=replyMessage;
+        }
+      };
+      $('.messages').scrollTop($('.messages')[0].scrollHeight);
     },1000);
   }
 });
@@ -81,7 +94,6 @@ $('.search-contact-input').keyup(function (search) {
 
 //Milestone 3: cambia conversazione in base al contatto + rimuovi messaggio
 var dropdown ='<i class="fas fa-chevron-down"></i>'+'<div class="dropdown-menu">'+'<div class="dropdown-menu-item">'+'Elimina messaggio'+'</div>'+'</div>';
-
 
 var conversazioni = [
   {
@@ -325,6 +337,8 @@ $('.contact').click(function () {
   }
   $(this).toggleClass('light-gray');
   $(prevContactSelected).removeClass('light-gray');
+  $('.messages').scrollTop($('.messages')[0].scrollHeight);
+  $('.message-to-send').val('');
 });
 
 $(document).on('mouseenter mouseleave','.message',function () {
@@ -333,6 +347,6 @@ $(document).on('mouseenter mouseleave','.message',function () {
     $(this).siblings('.dropdown-menu').toggleClass('active');
   })
   $('.dropdown-menu-item').click(function () {
-    $(this).parents('.message-container').hide()
-  })
+    $(this).parents('.message-container').remove();
+  });
 });
